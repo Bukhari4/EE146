@@ -1,21 +1,21 @@
 clear all
 close all
 clc
-
-trainingSets = imageSet('./TRAININGSET','recursive');
-validationSets = imageSet('./TESTSET','recursive');
+% trainingSets = imageSet('C:\Users\Bukhari\Documents\MATLAB\EE146\Project\try3\TRAININGSET','recursive');
+% validationSets = imageSet('C:\Users\Bukhari\Documents\MATLAB\EE146\Project\try3\TESTSET','recursive');
 % { imgSets.Description } % display all labels on one line
 % [imgSets.Count]         % show the corresponding count of images
 % minSetCount = min([imgSets.Count]); % determine the smallest amount of images in a category
 % 
 % Use partition method to trim the set.
 % imgSets = partition(imgSets, minSetCount, 'randomize');
+imgSets = imageSet('./SAMPLES','recursive');
 
 % Notice that each set now has exactly the same number of images.
 % [imgSets.Count]
-% [trainingSets, validationSets] = partition(imgSets, 0.3, 'randomize');
+[trainingSets, validationSets] = partition(imgSets, 0.8, 'randomize');
 extractorFcn = @FeaturesColorExtractor;
-bag = bagOfFeatures(trainingSets,'CustomExtractor',extractorFcn,'VocabularySize',2000);
+bag = bagOfFeatures(trainingSets,'CustomExtractor',extractorFcn,'VocabularySize',500,'StrongestFeatures' ,0.9);
 %bag = bagOfFeatures(trainingSets, 'VocabularySize',2000)%,'Upright',false);
 img = read(trainingSets(1), 1);
 featureVector = encode(bag, img);

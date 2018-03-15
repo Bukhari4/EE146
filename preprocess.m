@@ -1,11 +1,4 @@
 function masked_rgb_image=preprocess(I)
-    I = imread('./TRAININGSET/Red Apple/images (3).jpg');
-    % I_g = rgb2gray(I);
-    % th = graythresh(I_g);
-    % mask = imbinarize(I_g,th);
-    % maskedRgbImage = bsxfun(@times, I, cast(mask, 'like', I));
-    % imshowpair(maskedRgbImage, mask, 'montage');
-
     I_blur = imgaussfilt(I,5);
     cform = makecform('srgb2lab');
     I_lab = applycform(I_blur,cform);
@@ -19,8 +12,6 @@ function masked_rgb_image=preprocess(I)
     [cluster_idx, cluster_center] = kmeans(ab,nColors,'distance','sqEuclidean', ...
                                           'Replicates',3);
     pixel_labels = reshape(cluster_idx,nrows,ncols);
-    % figure, imshow(I);
-%     figure, imshow(pixel_labels,[]), title('image labeled by cluster index');
     target = pixel_labels(1, 1);
     M = zeros(nrows, ncols);
     for i = 1:nrows
@@ -33,6 +24,4 @@ function masked_rgb_image=preprocess(I)
     se = strel('disk',10);
     M = imclose(M,se);
     masked_rgb_image = bsxfun(@times, I, cast(M, 'like', I));
-%     figure, imshow(masked_rgb_image);
-%     imwrite(masked_rgb_image, 'bs_image.jpg');
 end
