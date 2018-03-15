@@ -13,9 +13,9 @@ imgSets = imageSet('./SAMPLES','recursive');
 
 % Notice that each set now has exactly the same number of images.
 % [imgSets.Count]
-[trainingSets, validationSets] = partition(imgSets, 0.8, 'randomize');
+[trainingSets, validationSets] = partition(imgSets, 0.85, 'randomize');
 extractorFcn = @FeaturesColorExtractor;
-bag = bagOfFeatures(trainingSets,'CustomExtractor',extractorFcn,'VocabularySize',500,'StrongestFeatures' ,0.9);
+bag = bagOfFeatures(trainingSets,'CustomExtractor',extractorFcn,'VocabularySize',1000,'StrongestFeatures' ,0.9);
 %bag = bagOfFeatures(trainingSets, 'VocabularySize',2000)%,'Upright',false);
 img = read(trainingSets(1), 1);
 featureVector = encode(bag, img);

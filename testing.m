@@ -1,4 +1,4 @@
- imgTestSets = imageSet('C:\Users\Bukhari\Documents\MATLAB\EE146\Project\try3\TESSTING','recursive')
+%  imgTestSets = imageSet('C:\Users\Bukhari\Documents\MATLAB\EE146\Project\try3\TESSTING','recursive')
 %  [labelIdx, scores] = predict(categoryClassifier, imgTestSets);
 %  categoryClassifier.Labels(labelIdx)
 
@@ -13,8 +13,8 @@ I=preprocess(img);
 imshow(I)
 % Display the string label
 s=categoryClassifier.Labels(labelIdx)
-text = char(s)
-NET.addAssembly('System.Speech');
-obj = System.Speech.Synthesis.SpeechSynthesizer;
-obj.Volume = 100;
-Speak(obj, text);
+% text = char(s)
+% NET.addAssembly('System.Speech');
+% obj = System.Speech.Synthesis.SpeechSynthesizer;
+% obj.Volume = 100;
+% Speak(obj, text);
