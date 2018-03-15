@@ -4,7 +4,7 @@ function [features, metrics] = FeaturesColorExtractor(I)
 % Local color layout features are extracted from truecolor image, I and
 % returned in features. The strength of the features are returned in
 % metrics.
-
+I=preprocess(I);
 [~,~,P] = size(I);
 
 isColorImage = P == 3; 

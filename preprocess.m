@@ -20,7 +20,7 @@ function masked_rgb_image=preprocess(I)
                                           'Replicates',3);
     pixel_labels = reshape(cluster_idx,nrows,ncols);
     % figure, imshow(I);
-    figure, imshow(pixel_labels,[]), title('image labeled by cluster index');
+%     figure, imshow(pixel_labels,[]), title('image labeled by cluster index');
     target = pixel_labels(1, 1);
     M = zeros(nrows, ncols);
     for i = 1:nrows
@@ -33,6 +33,6 @@ function masked_rgb_image=preprocess(I)
     se = strel('disk',10);
     M = imclose(M,se);
     masked_rgb_image = bsxfun(@times, I, cast(M, 'like', I));
-    figure, imshow(masked_rgb_image);
-    imwrite(masked_rgb_image, 'bs_image.jpg');
+%     figure, imshow(masked_rgb_image);
+%     imwrite(masked_rgb_image, 'bs_image.jpg');
 end
