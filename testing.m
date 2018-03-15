@@ -9,11 +9,12 @@ for idx = 1:100
 
 end
 I=preprocess(img);
-[labelIdx, scores] = predict(categoryClassifier, img);
+[labelIdx, scores] = predict(categoryClassifier, I);
 imshow(I)
 % Display the string label
-s=categoryClassifier.Labels(labelIdx)
-% text = char(s)
+s=categoryClassifier.Labels(labelIdx);
+text = char(s)
+system(sprintf('say %s', text));
 % NET.addAssembly('System.Speech');
 % obj = System.Speech.Synthesis.SpeechSynthesizer;
 % obj.Volume = 100;
