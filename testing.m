@@ -13,8 +13,10 @@ I=preprocess(img);
 imshow(I)
 % Display the string label
 s=categoryClassifier.Labels(labelIdx)
-% text = char(s)
+text = char(s)
+system(sprintf('say %s', text));
 % NET.addAssembly('System.Speech');
 % obj = System.Speech.Synthesis.SpeechSynthesizer;
 % obj.Volume = 100;
 % Speak(obj, text);
+clear cam
